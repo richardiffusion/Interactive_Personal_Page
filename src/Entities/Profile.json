@@ -1,0 +1,167 @@
+{
+  "name": "Profile",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "description": "Full name"
+    },
+    "headline": {
+      "type": "string",
+      "description": "Professional headline/tagline"
+    },
+    "bio": {
+      "type": "string",
+      "description": "Personal bio/introduction"
+    },
+    "current_role": {
+      "type": "string",
+      "description": "Current job title"
+    },
+    "current_company": {
+      "type": "string",
+      "description": "Current company name"
+    },
+    "current_status": {
+      "type": "string",
+      "description": "Current work status (e.g., 'Open to opportunities', 'Currently employed')"
+    },
+    "location": {
+      "type": "string",
+      "description": "Location"
+    },
+    "email": {
+      "type": "string",
+      "description": "Contact email"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "profile_image_url": {
+      "type": "string",
+      "description": "Profile photo URL"
+    },
+    "skills": {
+      "type": "array",
+      "description": "Technical skills",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "Beginner",
+              "Intermediate",
+              "Advanced",
+              "Expert"
+            ]
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "experience": {
+      "type": "array",
+      "description": "Work experience",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "start_date": {
+            "type": "string"
+          },
+          "end_date": {
+            "type": "string"
+          },
+          "current": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "achievements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "description": "Education history",
+      "items": {
+        "type": "object",
+        "properties": {
+          "degree": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "institution": {
+            "type": "string"
+          },
+          "year": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "description": "Professional certifications",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "issuer": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "social_links": {
+      "type": "object",
+      "description": "Social media links",
+      "properties": {
+        "linkedin": {
+          "type": "string"
+        },
+        "github": {
+          "type": "string"
+        },
+        "twitter": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": []
+}
