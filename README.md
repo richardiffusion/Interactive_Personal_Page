@@ -1,4 +1,4 @@
-This is my personal page with interactive features. You can also check it out at www.richardiffusion.com and download my online resume. Thanks!
+This is my personal page with interactive features. You can also check it out at www.richardiffusion.com and download my online resume there. Thanks!
 
 This page is created with React, node.js and javascript.
 
