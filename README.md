@@ -39,18 +39,23 @@ More commands and requirements please check package.json file.
 
 # Preview
 ## Main Page
-<img width="1985" height="1716" alt="image" src="https://github.com/user-attachments/assets/3b382386-0357-4dac-ace5-c2728c06205e" />
+<img width="2115" height="1722" alt="image" src="https://github.com/user-attachments/assets/e31406c0-bde9-4db5-887b-ae3ca8b5aec4" />
 
-<img width="1994" height="1490" alt="image" src="https://github.com/user-attachments/assets/9bbd952f-5ad2-4a0f-a705-e6fc29bde2b5" />
+<img width="2153" height="1729" alt="image" src="https://github.com/user-attachments/assets/2fb67419-12e9-4f4f-a071-a3fe401ebcb0" />
 
-<img width="1994" height="903" alt="image" src="https://github.com/user-attachments/assets/d152110b-dfa7-4a40-a01f-7b2b0a9542ef" />
+<img width="1897" height="1674" alt="image" src="https://github.com/user-attachments/assets/ee6da9c9-e0f0-493b-939a-03413998edb2" />
+
+<img width="1748" height="1059" alt="image" src="https://github.com/user-attachments/assets/0023d7c7-e9d7-47fd-ba8c-2779dc93a3e2" />
 
 ## Edit Profile
 After applying these codes in your local environment, you can simply click on the "edit profiles" to create your own resume.
+You can also make changes to your resume on your production environment(eg. on your live website). The changes will be made on API profile.
 
-<img width="1456" height="1675" alt="image" src="https://github.com/user-attachments/assets/e1de466a-050f-40bb-abeb-ff0a7121bdda" />
+<img width="2023" height="1701" alt="image" src="https://github.com/user-attachments/assets/56e8a83e-ce30-4c76-944f-d4007294170c" />
 
-This allows you to quickly customize your own webpage and resume for anyone to download(download feature to be updated).
+This allows you to quickly customize your own webpage and resume for anyone to download(download feature to be developed).
 
 ## Admin Login
 With config admin password, edit profile can be activated and directly make change on the api file.
+<img width="933" height="704" alt="image" src="https://github.com/user-attachments/assets/4309967c-43a4-45ef-abef-c69dca04dea1" />
+
