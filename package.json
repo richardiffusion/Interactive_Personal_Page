@@ -1,23 +1,30 @@
 {
   "name": "my_website",
-  "description": "This is a conceptual representation. Dependencies are managed by the base44 platform.",
+  "description": "Dependencies are managed by richardiffusion.me.",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "node server/app.js",
+    "start": "npm run build && npm run server",
+    "deploy": "npm run build && scp -r dist/* user@your-server:/path/to/portfolio/ && scp -r server/* user@your-server:/path/to/portfolio/"
   },
   "dependencies": {
     "@shadcn/ui": "latest",
     "@tailwindcss/forms": "^0.5.10",
+    "cors": "^2.8.5",
     "date-fns": "^3.6.0",
+    "express": "^4.21.2",
     "framer-motion": "^11.0.20",
     "lodash": "^4.17.21",
     "lucide-react": "^0.363.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.20"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",

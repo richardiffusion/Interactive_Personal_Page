@@ -82,7 +82,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-white">
       {/* Edit button for authenticated users */}
-      {currentUser && (
+      {Profile.canEdit() && (
         <div className="fixed top-6 right-6 z-50">
           <Link to={createPageUrl('EditProfile')}>
             <Button className="bg-indigo-600 hover:bg-indigo-700 shadow-lg">
