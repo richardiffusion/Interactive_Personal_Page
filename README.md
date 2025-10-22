@@ -1,12 +1,12 @@
-This is my personal page with interactive features. You can also check it out at www.richardiffusion.me (not yet live) and download my online resume there. Thanks!
+This is my personal page with interactive features. You can also check it out at www.richardiffusion.me and download my online resume there(download feature not available atm). Thanks!
 
 This page is created with React, node.js and javascript.
 
 # Interactive Personal Page
 
 ## Project Structure
-- `client/` - Frontend React
-- `server/` - Backend Express API
+- `frontend/` - Frontend React
+- `backend/` - Backend Express API
 
 ## Dev and prod run
 ```bash

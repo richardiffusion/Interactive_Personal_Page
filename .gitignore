@@ -59,3 +59,12 @@ readme.txt
 
 # vite temp
 vite1111temp.j1
+
+# change log
+CHANGE_LOG.md
+
+# dockerfile
+dockerfile.backend
+dockerfile.frontend
+docker-compose.yml
+nginx.conf

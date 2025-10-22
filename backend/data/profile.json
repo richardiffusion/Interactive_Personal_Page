@@ -1,0 +1,121 @@
+{
+  "full_name": "Richard Yiqun Li",
+  "headline": "",
+  "bio": "",
+  "current_role": "AI Product Engineer",
+  "current_company": "Shenzhen Tech Company",
+  "current_status": "Open to opportunities",
+  "location": "Singapore | Hong Kong | Shenzhen",
+  "email": "richard.yiqun.li@outlook.com",
+  "phone": "+86 1856 581 8176",
+  "profile_image_url": "https://media.licdn.com/dms/image/v2/D5603AQEFlHnAo8Mv0w/profile-displayphoto-crop_800_800/B56ZmLg1.eHAAM-/0/1758982267671?e=1762387200&v=beta&t=i7sO3W9AWmtjqbHrkzSCPn98u3ADmbXa5rM5EUR7e_A",
+  "skills": [
+    {
+      "name": "Python",
+      "level": "Expert",
+      "category": "Programming Languages"
+    },
+    {
+      "name": "JavaScript",
+      "level": "Expert",
+      "category": "Programming Languages"
+    },
+    {
+      "name": "Pytorch DDP",
+      "level": "Expert",
+      "category": "NN & LLM"
+    },
+    {
+      "name": "C++",
+      "level": "Advanced",
+      "category": "Programming Languages"
+    },
+    {
+      "name": "React",
+      "level": "Advanced",
+      "category": "Frontend Frameworks"
+    },
+    {
+      "name": "Node.js",
+      "level": "Advanced",
+      "category": "Backend Technologies"
+    },
+    {
+      "name": "PHP",
+      "level": "Advanced",
+      "category": "Programming Languages"
+    },
+    {
+      "name": "DeepSpeed",
+      "level": "Advanced",
+      "category": "NN & LLM"
+    },
+    {
+      "name": "vLLM",
+      "level": "Advanced",
+      "category": "NN & LLM"
+    },
+    {
+      "name": "MongoDB",
+      "level": "Intermediate",
+      "category": "Databases"
+    }
+  ],
+  "experience": [
+    {
+      "title": "AI/ML Developer",
+      "company": "Shenzhen Tech Company",
+      "location": "Shenzhen",
+      "start_date": "2023-04-01",
+      "end_date": "",
+      "current": true,
+      "description": "Focus on AI and practical implementation",
+      "achievements": [
+        "Develop intelligent AI agents that can reason, plan, and execute complex tasks.",
+        "Oversee project management to ensure these innovative solutions are delivered efficiently and effectively.",
+        "Leverag cutting-edge AI to solve real-world problems and drive technological advancement."
+      ]
+    },
+    {
+      "title": "Full-stack Web Developer",
+      "company": "HongKong Tech Giant",
+      "location": "Hong Kong",
+      "start_date": "2019-10-01",
+      "end_date": "2023-2-28",
+      "current": false,
+      "description": "Expertise in JavaScript ecosystem (Node.js, React) for building robust, full-stack applications.",
+      "achievements": [
+        "Proficient in building fast, scalable server-side applications with Node.js and creating intuitive, high-performance front-end interfaces with React.",
+        "Integrate AI components seamlessly into larger software ecosystems.",
+        "Optimize front-end infrastructure to standard concurrency requirements."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master Degree in Information and Communication Technology",
+      "field": "Information Technology and Computer Science",
+      "institution": "New York Institute of Technology",
+      "year": "2015-2017",
+      "description": "Master Degree with Distinction, GPA 4.0/4.0"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Alibaba Cloud Certified Data Engineer",
+      "issuer": "Alibaba",
+      "date": "2021-06-01"
+    },
+    {
+      "name": "React Professional Certification",
+      "issuer": "Shenzhen Internet Development Association",
+      "date": "2020-12-01"
+    }
+  ],
+  "social_links": {
+    "linkedin": "https://www.linkedin.com/in/richardyiqunli/",
+    "github": "https://github.com/richardiffusion",
+    "twitter": "https://x.com/",
+    "website": "https://richardiffusion.me"
+  }
+}

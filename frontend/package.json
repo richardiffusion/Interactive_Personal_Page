@@ -1,0 +1,58 @@
+{
+  "name": "my_website",
+  "description": "Dependencies are managed by richardiffusion.me.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node backend/server.js",
+    "start": "npm run build && npm run server",
+    "deploy": "npm run build && scp -r dist/* user@your-server:/path/to/portfolio/ && scp -r backend/* user@your-server:/path/to/portfolio/"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.20",
+    "@shadcn/ui": "latest",
+    "@tailwindcss/forms": "^0.5.10",
+    "clsx": "^2.1.1",
+    "cors": "^2.8.5",
+    "date-fns": "^3.6.0",
+    "express": "^4.21.2",
+    "framer-motion": "^11.0.20",
+    "lodash": "^4.17.21",
+    "lucide-react": "^0.363.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^6.22.3",
+    "simple-icons": "^15.16.1",
+    "tailwind-merge": "^3.3.1",
+
+    "dotenv": "^16.3.1",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "axios": "^1.6.0",
+
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-slot": "^1.2.3",
+    "class-variance-authority": "^0.7.1",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
+    "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.18",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "vite": "^4.5.0",
+
+    "nodemon": "^3.0.1"
+  },
+  
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
