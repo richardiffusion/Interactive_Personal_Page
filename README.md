@@ -16,8 +16,8 @@ npm install
 # Run static dev on front-end
 npm run dev
 
-# Run backend with active API
-npm run server
+# Run backend with active API(before build)
+npm run preview
 
 
 ## Prod env deployment
