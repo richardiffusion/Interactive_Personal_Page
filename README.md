@@ -40,7 +40,8 @@ More commands and requirements please check package.json file.
 # Preview
 ## Main Page
 <img width="2449" height="1884" alt="image" src="https://github.com/user-attachments/assets/c53e1d2d-0879-4133-8b8b-1036d1ab5cbe" />
-Noted that in v1.1.0, the ai_chatbox is displayed on the front page as well. Details about this project please check the Ai_chatbox page. github.com/richardiffusion/ai_chatbox
+Noted that in v1.1.0, the ai_chatbox is displayed on the front page as well. Details about this project please check the Ai_chatbox page. 
+AI_chatbox: https://github.com/richardiffusion/ai_chatbox
 
 <img width="2153" height="1729" alt="image" src="https://github.com/user-attachments/assets/2fb67419-12e9-4f4f-a071-a3fe401ebcb0" />
 
