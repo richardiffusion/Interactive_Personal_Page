@@ -2,8 +2,8 @@ This is my personal page with interactive features. You can also check it out at
 
 This page is created with React, node.js and javascript.
 
-- V1.2.0 Update
-Ai_chatbox has now supported the Stream Output!
+V1.2.0 Update
+- /chat page Ai_chatbox has now supported the Stream Output on this project!
 
 # Interactive Personal Page
 
