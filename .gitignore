@@ -68,3 +68,6 @@ dockerfile.backend
 dockerfile.frontend
 docker-compose.yml
 nginx.conf
+
+# favicon setup
+favicon_setup.html

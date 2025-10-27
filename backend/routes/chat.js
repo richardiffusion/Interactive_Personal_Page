@@ -69,23 +69,172 @@ const getModelPrompts = () => {
   return mergedPrompts;
 };
 
-// 聊天接口
+// 20251022新增：流式聊天接口
+router.post('/stream', async (req, res) => {
+  // 设置 SSE (Server-Sent Events) 头部
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    'Access-Control-Allow-Origin': '*',
+  });
+
+  try {
+    const { prompt, model: modelType = 'general' } = req.body;
+
+    if (!prompt) {
+      res.write(`data: ${JSON.stringify({ error: 'Prompt is required' })}\n\n`);
+      res.end();
+      return;
+    }
+
+    // 检查是否启用模拟模式
+    const MOCK_MODE = process.env.MOCK_MODE === 'true';
+    if (MOCK_MODE) {
+      console.log(`🤖 Mock Stream Mode: Using model ${modelType} to respond`);
+      
+      const mockResponses = {
+        general: `This is a general response to "${prompt}". Currently using the general assistant mode.`,
+        creative: `🎨 Creative mode response to "${prompt}": Let me answer this question in an imaginative way...`,
+        technical: `⚙️ Technical mode response to "${prompt}": Analyzing this question from a technical perspective...`,
+        deepseek: `🤔 DeepSeek analysis of "${prompt}": Let me answer this with logical reasoning...`
+      };
+      
+      const response = mockResponses[modelType] || mockResponses.general;
+      const words = response.split('');
+      
+      // 模拟逐字输出
+      for (let i = 0; i < words.length; i++) {
+        await new Promise(resolve => setTimeout(resolve, 30));
+        res.write(`data: ${JSON.stringify({ 
+          content: words[i],
+          done: false 
+        })}\n\n`);
+      }
+      
+      // 发送完成信号
+      res.write(`data: ${JSON.stringify({ 
+        done: true,
+        model: modelType,
+        timestamp: new Date().toISOString()
+      })}\n\n`);
+      res.end();
+      return;
+    }
+
+    const config = AI_CONFIG[modelType];
+    if (!config) {
+      res.write(`data: ${JSON.stringify({ error: `Unsupported model: ${modelType}` })}\n\n`);
+      res.end();
+      return;
+    }
+
+    if (!config.key || config.key.includes('your_') || config.key === 'your_deepseek_api_key_here') {
+      res.write(`data: ${JSON.stringify({ 
+        error: `API key for ${modelType} is not configured`,
+        message: 'Please set MOCK_MODE=true or configure API keys in .env file'
+      })}\n\n`);
+      res.end();
+      return;
+    }
+
+    // 动态获取提示词
+    const MODEL_PROMPTS = getModelPrompts();
+    const systemPrompt = MODEL_PROMPTS[modelType] || MODEL_PROMPTS.general;
+    const fullPrompt = `${systemPrompt}\n\nUser: ${prompt}\n\nAssistant:`;
+
+    console.log(`📝 Stream Mode: Prompt Used (${modelType}):`, systemPrompt.substring(0, 100) + '...');
+
+    // 流式请求
+    const response = await axios.post(config.url, {
+      model: config.model,
+      messages: [{ role: 'user', content: fullPrompt }],
+      stream: true,  // 关键：启用流式
+      temperature: 0.7,
+      max_tokens: 2000
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${config.key}`
+      },
+      responseType: 'stream'  // 关键：接收流式响应
+    });
+
+    let buffer = '';
+    
+    response.data.on('data', (chunk) => {
+      buffer += chunk.toString();
+      
+      // 处理流式数据
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+      
+      for (const line of lines) {
+        if (line.startsWith('data: ') && !line.includes('[DONE]')) {
+          try {
+            const data = JSON.parse(line.slice(6));
+            const content = data.choices?.[0]?.delta?.content || '';
+            
+            if (content) {
+              res.write(`data: ${JSON.stringify({ 
+                content: content,
+                done: false 
+              })}\n\n`);
+            }
+          } catch (e) {
+            // 忽略解析错误
+          }
+        }
+      }
+    });
+
+    response.data.on('end', () => {
+      // 发送完成信号
+      res.write(`data: ${JSON.stringify({ 
+        done: true,
+        model: modelType,
+        timestamp: new Date().toISOString()
+      })}\n\n`);
+      res.end();
+    });
+
+    response.data.on('error', (error) => {
+      console.error('Stream Error:', error);
+      res.write(`data: ${JSON.stringify({ 
+        error: 'Stream connection failed',
+        details: error.message 
+      })}\n\n`);
+      res.end();
+    });
+
+  } catch (error) {
+    console.error('AI API Stream Error:', error.response?.data || error.message);
+    res.write(`data: ${JSON.stringify({ 
+      error: 'Failed to get stream response',
+      details: error.message 
+    })}\n\n`);
+    res.end();
+  }
+});
+
+
+// 非流式聊天接口
 router.post('/', async (req, res) => {
   try {
     
     // 20251016测试代码
-    console.log('🔧 收到聊天请求:', req.body);
+    console.log('🔧 Receive Chat Request:', req.body);
     console.log('🔧 MOCK_MODE:', process.env.MOCK_MODE);
     console.log('🔧 NODE_ENV:', process.env.NODE_ENV);
     
     const { prompt, model: modelType = 'general' } = req.body;
-    
-    console.log('🔧 请求模型:', modelType);
-    console.log('🔧 AI_CONFIG 检查:', {
+
+    console.log('🔧 Request Model:', modelType);
+    console.log('🔧 AI_CONFIG Check:', {
       general: {
         hasKey: !!AI_CONFIG.general.key,
-        key: AI_CONFIG.general.key ? '已设置' : '未设置',
-        keyValue: AI_CONFIG.general.key ? AI_CONFIG.general.key.substring(0, 10) + '...' : '空'
+        key: AI_CONFIG.general.key ? 'Configured' : 'not configured',
+        keyValue: AI_CONFIG.general.key ? AI_CONFIG.general.key.substring(0, 10) + '...' : 'empty'
       }
     });
     // 测试代码止
@@ -97,12 +246,12 @@ router.post('/', async (req, res) => {
     // 检查是否启用模拟模式
     const MOCK_MODE = process.env.MOCK_MODE === 'true';
     if (MOCK_MODE) {
-      console.log(`🤖 模拟模式: 使用模型 ${modelType} 回复`);
+      console.log(`🤖 Mock Mode: Using model ${modelType} to respond`);
       const mockResponses = {
-        general: `这是对"${prompt}"的通用回复。当前使用通用助手模式。`,
-        creative: `🎨 创意模式回复 "${prompt}"：让我用富有想象力的方式回答这个问题...`,
-        technical: `⚙️ 技术模式回复 "${prompt}"：从技术角度分析，这个问题涉及...`,
-        deepseek: `🤔 DeepSeek 深度分析 "${prompt}"：让我用逻辑推理来解答...`
+        general: `This is a general response to "${prompt}". Currently using the general assistant mode.`,
+        creative: `🎨 Creative mode response to "${prompt}": Let me answer this question in an imaginative way...`,
+        technical: `⚙️ Technical mode response to "${prompt}": Analyzing this question from a technical perspective...`,
+        deepseek: `🤔 DeepSeek analysis of "${prompt}": Let me answer this with logical reasoning...`
       };
       
       // 模拟处理时间
@@ -134,7 +283,7 @@ router.post('/', async (req, res) => {
     const systemPrompt = MODEL_PROMPTS[modelType] || MODEL_PROMPTS.general;
     const fullPrompt = `${systemPrompt}\n\nUser: ${prompt}\n\nAssistant:`;
 
-    console.log(`📝 使用提示词 (${modelType}):`, systemPrompt.substring(0, 100) + '...');
+    console.log(`📝 Using prompt (${modelType}):`, systemPrompt.substring(0, 100) + '...');
 
     let response;
     
@@ -232,9 +381,9 @@ router.get('/models', (req, res) => {
 
 
 // 添加环境变量检查
-console.log('🔧 环境变量检查:');
+console.log('🔧 Environment Variable Check:');
 console.log('MOCK_MODE:', process.env.MOCK_MODE);
-console.log('DEEPSEEK_API_KEY:', process.env.DEEPSEEK_API_KEY ? '已设置' : '未设置');
+console.log('DEEPSEEK_API_KEY:', process.env.DEEPSEEK_API_KEY ? 'Configured' : 'Not Configured');
 console.log('NODE_ENV:', process.env.NODE_ENV);
 
 
