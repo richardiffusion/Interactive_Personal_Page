@@ -88,6 +88,14 @@ router.post('/stream', async (req, res) => {
       return;
     }
 
+    // 新增：记录用户实际提问
+    console.log('👤 User Question:', {
+      model: modelType,
+      question: prompt,
+      timestamp: new Date().toISOString(),
+      ip: req.ip || req.connection.remoteAddress
+    });
+
     // 检查是否启用模拟模式
     const MOCK_MODE = process.env.MOCK_MODE === 'true';
     if (MOCK_MODE) {
@@ -189,6 +197,10 @@ router.post('/stream', async (req, res) => {
     });
 
     response.data.on('end', () => {
+      // 新增：记录流式响应完成
+      console.log(`✅ Stream Response Completed for: "${prompt.substring(0, 50)}${prompt.length > 50 ? '...' : ''}"`);
+      
+      
       // 发送完成信号
       res.write(`data: ${JSON.stringify({ 
         done: true,
