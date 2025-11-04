@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 
 import HeroSection from '../Components/portfolio/HeroSection.jsx';
+import BlogSection from '../Components/portfolio/BlogSection.jsx'; // 新增导入
 import ExperienceSection from '../Components/portfolio/ExperienceSection.jsx';
 import SkillsSection from '../Components/portfolio/SkillsSection.jsx';
 import EducationSection from '../Components/portfolio/EducationSection.jsx';
@@ -94,6 +95,7 @@ export default function Portfolio() {
       )}
 
       <HeroSection profile={profile} />
+      <BlogSection /> {/* 新增博客板块 */}
       <ExperienceSection experience={profile.experience} />
       <SkillsSection skills={profile.skills} />
       <EducationSection 
