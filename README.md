@@ -5,6 +5,9 @@ This page is created with React, node.js and javascript.
 V1.2.0 Update
 - /chat page Ai_chatbox has now supported the Stream Output on this project!
 
+V1.2.2 Update
+- /blog page Miniblog has now been updated to the Main Page.
+
 # Interactive Personal Page
 
 ## Project Structure
@@ -45,6 +48,10 @@ More commands and requirements please check package.json file.
 <img width="2449" height="1884" alt="image" src="https://github.com/user-attachments/assets/c53e1d2d-0879-4133-8b8b-1036d1ab5cbe" />
 Noted that in v1.1.0, the ai_chatbox is displayed on the front page as well. Details about this project please check the Ai_chatbox page. 
 AI_chatbox: https://github.com/richardiffusion/ai_chatbox
+
+<img width="2323" height="1149" alt="image" src="https://github.com/user-attachments/assets/47b925b3-ee73-40b2-b189-df4acb5b1b92" />
+In version v1.2.2, the blog section is displayed on the front page. Details about this project please check the miniblog page.
+Miniblog: http://github.com/richardiffusion/miniblog
 
 <img width="2153" height="1729" alt="image" src="https://github.com/user-attachments/assets/2fb67419-12e9-4f4f-a071-a3fe401ebcb0" />
 
